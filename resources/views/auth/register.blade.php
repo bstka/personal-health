@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-/*
+{{-- /*
  ________  ___  ________  _________  ________  ___  __    ________
 |\   __  \|\  \|\   ____\|\___   ___\\   __  \|\  \|\  \ |\   __  \
 \ \  \|\ /\ \  \ \  \___|\|___ \  \_\ \  \|\  \ \  \/  /|\ \  \|\  \
@@ -13,7 +13,7 @@
 https://github.com/BisTaka
 https://duniacoder.com
 https://bistaka.github.com
-*/
+*/ --}}
 
 @section('content')
 <div class="container">

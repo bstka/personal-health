@@ -1,5 +1,5 @@
 @extends('layouts.app')
-/*
+{{-- /*
 
  ______     __     ______     ______   ______     __  __     ______
 /\  == \   /\ \   /\  ___\   /\__  _\ /\  __ \   /\ \/ /    /\  __ \
@@ -13,7 +13,7 @@
 
 
 
-*/
+*/ --}}
 @section('content')
 <div class="container">
     {{--  <div class="row justify-content-center">

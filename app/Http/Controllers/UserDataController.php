@@ -56,25 +56,41 @@ class UserDataController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(array(
-            'tensi' => 'required|numeric',
-            'tensi2' => 'required|numeric',
-            'berat_badan' => 'required|numeric',
-            'tinggi_badan' => 'required|numeric',
-        ));
+        $validated = request()->validate([
+            'tensi' => 'required|numeric|regex:/^[0-9]+$/',
+            'tensi2' => 'required|numeric|regex:/^[0-9]+$/',
+            'berat_badan' => 'required|numeric|regex:/^[0-9]+$/',
+            'tinggi_badan' => 'required|numeric|regex:/^[0-9]+$/',
+        ],
+        [
+            'tensi.required' => 'Tekanan Sistolik Diperlukan',
+            'tensi.numeric' => 'Tekanan Harus Berupa Angka',
+            'tensi2.required' => 'Tekanan Diastolik Diperlukan',
+            'tensi2.numeric' => 'Tekanan Harus Berupa Angka',
+            'berat_badan.required' => 'Berat Badan Diperlukan',
+            'berat_badan.numeric' => 'Berat Badan Harus Berupa Angka',
+            'tinggi_badan.required' => 'Tinggi Badan Diperlukan',
+            'tinggi_badan.numeric' => 'Tinggi Badan Harus Berupa Angka',
+        ]
+        );
+        
+        $check = Auth::check();
+        if ($check) {
+            $userid = Auth::user()->id;
+            $data = UserData::create([
+                'user_id' => $userid,
+                'tensi' => $validated['tensi'],
+                'tensi2' => $validated['tensi2'],
+                'berat_badan' => $validated['berat_badan'],
+                'tinggi_badan' => $validated['tinggi_badan'],
+            ]);
 
-        //tidak menggunakan mass assigment karena alasan keamanan
-        $userid = Auth::user()->id;
-
-        $data = new UserData();
-        $data->user_id = $userid;
-        $data->tensi = $request->get('tensi');
-        $data->tensi2 = $request->get('tensi2');
-        $data->berat_badan = $request->get('berat_badan');
-        $data->tinggi_badan = $request->get('tinggi_badan');
-        $data->save();
-
-        return redirect('/dashboard')->with('success', 'Makasih Udah Absen!');
+            if (! empty($data)) {
+                return redirect('/dashboard')->with('success', 'Makasih Udah Absen!');
+            }
+            return redirect('/dashboard')->with('error', 'Error Nih kwkwkwk');
+        }
+        return redirect()->route('login')->with('error', 'Silahkan Login Terlebih Dahulu');
     }
 
     /**

@@ -20,7 +20,7 @@ class CreateUserDataTable extends Migration
             $table->integer('tensi2');
             $table->integer('berat_badan');
             $table->integer('tinggi_badan');
-            $table->unsignedBigInteger('user_id');
+            $table->string('user_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
