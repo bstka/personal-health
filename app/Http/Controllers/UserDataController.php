@@ -73,7 +73,7 @@ class UserDataController extends Controller
             'tinggi_badan.numeric' => 'Tinggi Badan Harus Berupa Angka',
         ]
         );
-        
+
         $check = Auth::check();
         if ($check) {
             $userid = Auth::user()->id;

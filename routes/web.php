@@ -27,6 +27,8 @@ Route::get('/', function () {
 Route::get('/test','UserDataController@index')->name('test.index');
 Route::get('/dashboard','UserDataController@show')->name('test.dashboard');
 Route::get('/absen','UserDataController@create')->name('test.create');
+Route::get('/user','UserController@index')->name('user.get');
+Route::get('/test','UserController@show')->name('user.show');
 Route::post('/absen','UserDataController@store')->name('test.absen');
 Route::post('/dashboard','UserDataController@store')->name('test.store');
 

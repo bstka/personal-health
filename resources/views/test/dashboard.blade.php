@@ -72,7 +72,7 @@
         <div class="col s12 m6 l3">
             <div class="card center-align hoverable animated bounce delay-5s">
                 <div class="card-content">
-                    <h1 id="jam"></h1>
+                    <h3 id="jam"></h3>
                     <h6 id="tanggal">Tutup</h6>
                 </div>
             </div>
@@ -199,7 +199,7 @@
     </div>
 </div>
 @endsection
-@section('javascript')
+@push('javascript')
 $(document).ready(function (){
     let tinggibadan = parseInt($('#tinggi_badan').text())
     let beratbadan = parseFloat($('#berat_badan').text())
@@ -256,12 +256,12 @@ $(document).ready(function (){
 })
 
 function waktu(){
-    let jam = moment().format('HH:mm:ss');
+    let jam = moment().format('HH:mm:ss')
     let tanggal = moment().format("DD-MMMM-YYYY")
-    $('#jam').text(jam)
-    $('#tanggal').text(tanggal)
+    $('#jam').html(jam)
+    $('#tanggal').html(tanggal)
 }
 setInterval(waktu, 1000);
 
 
-@endsection
+@endpush
