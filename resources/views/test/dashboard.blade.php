@@ -215,17 +215,17 @@ $(document).ready(function (){
         $('#komen').attr('style', 'color: #ffc107;')
         $('#komen').text('Anda Kekurusan')
     }
-    if (output >= 18.5 && output <= 25) {
+    if (output >= 18.5 && output < 23) {
         $('#gmbr1').attr('style', 'color: #42a5f5;')
         $('#komen').attr('style', 'color: #42a5f5;')
         $('#komen').text('Selamat Anda Sehat')
     }
-    if (output >=25 && output <=30){
+    if (output >=23 && output < 30){
         $('#gmbr1').attr('style', 'color: #fbc02d;')
         $('#komen').attr('style', 'color: #fbc02d;')
         $('#komen').text('Anda Kegemukan')
     }
-    if (output > 30){
+    if (output >= 30){
         $('#gmbr1').attr('style', 'color: #f44336;')
         $('#komen').attr('style', 'color: #f44336;')
         $('#komen').text('Anda Obesitas')
@@ -235,8 +235,8 @@ $(document).ready(function (){
     let tensi1 = parseInt($('#tensi1').text())
     let tensi2 = parseInt($('#tensi2').text())
 
-    let check1 = tensi1 < 100 || tensi2 < 60
-    let check2 = tensi1 < 130 || tensi2 < 80
+    let check1 = tensi1 < 90 || tensi2 < 60
+    let check2 = tensi1 >= 90 || tensi2 >= 60
     let check3 = tensi1 > 130 || tensi2 > 80
     if (check1){
         $('#gmbrtensi').attr('style', 'color: #fbc02d;' )
